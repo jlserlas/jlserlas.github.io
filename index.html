@@ -13,17 +13,15 @@
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
-    <!-- Header Fijo -->
+    <!-- Header -->
     <header class="bg-white dark:bg-slate-900 shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
         <button onclick="toggleSidebar()" class="text-2xl p-2">☰</button>
         <button onclick="showTab('inicio')" class="font-bold text-xl">Comunión</button>
         <button onclick="document.documentElement.classList.toggle('dark')" class="text-2xl p-2">🌓</button>
     </header>
 
-    <!-- Overlay (Capa para cerrar al clicar fuera) -->
+    <!-- Overlay y Sidebar -->
     <div id="overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-40 overlay"></div>
-
-    <!-- Sidebar Lateral -->
     <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white dark:bg-slate-900 shadow-2xl transform -translate-x-full transition-transform z-50 p-6">
         <button onclick="toggleSidebar()" class="mb-8 text-xl font-bold">✕ Cerrar</button>
         <div class="flex flex-col gap-6 text-lg font-semibold">
@@ -35,31 +33,61 @@
         </div>
     </div>
 
+    <!-- Contenido -->
     <main class="max-w-md mx-auto p-6 space-y-8">
-        <!-- ... (Contenido igual que antes) ... -->
+        
         <div id="inicio" class="tab-content block text-center space-y-6">
             <div class="text-6xl">🕊️</div>
             <h2 class="text-2xl font-bold">¡Bienvenidos!</h2>
+            <p class="text-lg">Toca cualquier sección para ver los detalles:</p>
             <div class="grid grid-cols-1 gap-4">
-                <button onclick="showTab('ceremonia')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold">⛪ Ceremonia</button>
-                <button onclick="showTab('restaurante')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold">🍽️ Restaurante</button>
+                <button onclick="showTab('ceremonia')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">⛪ Ceremonia</button>
+                <button onclick="showTab('restaurante')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🍽️ Restaurante</button>
+                <button onclick="showTab('mesas')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🪑 Mesas</button>
+                <button onclick="showTab('fiesta')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🎶 Fiesta</button>
             </div>
         </div>
-        <!-- ... (resto de tus pestañas) ... -->
+
+        <div id="ceremonia" class="tab-content hidden space-y-4">
+            <h2 class="text-2xl font-bold">⛪ Ceremonia</h2>
+            <p class="text-lg">11:30 en puerta, 12:00 inicio puntual.</p>
+            <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold">Cómo llegar</a>
+        </div>
+
+        <div id="restaurante" class="tab-content hidden space-y-4">
+            <h2 class="text-2xl font-bold">🍽️ El Banquete</h2>
+            <p class="text-lg">14:00 en Restaurante Celebraciones.</p>
+            <a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold">Cómo llegar</a>
+        </div>
+
+        <div id="mesas" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold">🪑 Ubicación de Mesas</h2>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800">
+                <h3 class="font-bold text-blue-600">Mesa 1</h3>
+                <p>Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</p>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800">
+                <h3 class="font-bold text-blue-600">Mesa 2</h3>
+                <p>Javi, Marta, Lucia, Jorge, Pablo, Laura, Diego, Sara</p>
+            </div>
+        </div>
+
+        <div id="fiesta" class="tab-content hidden text-center space-y-4">
+            <div class="text-6xl">🎶</div>
+            <h2 class="text-2xl font-bold">La Celebración</h2>
+            <p class="text-lg">17:00 en los jardines. ¡Barra libre y música!</p>
+        </div>
     </main>
 
     <script>
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('active');
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+            document.getElementById('overlay').classList.toggle('active');
         }
-
         function showTab(id) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
-            toggleSidebar(); // Cierra el menú y el overlay automáticamente
+            toggleSidebar();
             window.scrollTo(0, 0);
         }
     </script>
