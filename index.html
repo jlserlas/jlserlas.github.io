@@ -46,6 +46,7 @@
     <!-- Contenido -->
     <main class="max-w-md mx-auto p-6 space-y-8">
         
+        <!-- PESTAÑA: INICIO -->
         <div id="inicio" class="tab-content block text-center space-y-6">
             <div class="text-6xl">🕊️</div>
             <h2 class="text-2xl font-bold">¡Bienvenidos!</h2>
@@ -58,34 +59,96 @@
             </div>
         </div>
 
-        <div id="ceremonia" class="tab-content hidden space-y-4">
+        <!-- PESTAÑA: CEREMONIA -->
+        <div id="ceremonia" class="tab-content hidden space-y-5">
             <h2 class="text-2xl font-bold">⛪ Ceremonia</h2>
-            <p class="text-lg">11:30 en puerta, 12:00 inicio puntual.</p>
-            <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold">Cómo llegar</a>
+            
+            <div class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-xl border border-blue-100 dark:border-blue-800/50">
+                <p class="text-lg font-semibold">⏰ Horario</p>
+                <p class="text-sm mt-1">Las puertas se abren a las <strong>11:40</strong> (20 minutos antes). La ceremonia empezará puntual a las <strong>12:00</strong>.</p>
+            </div>
+
+            <!-- Aviso Fotografías -->
+            <div class="bg-red-50 dark:bg-red-900/30 border-l-4 border-red-500 p-4 rounded-r-xl">
+                <h3 class="font-bold text-red-800 dark:text-red-300 flex items-center gap-2">📷 Fotografías y Vídeos</h3>
+                <p class="text-sm text-red-700 dark:text-red-400 mt-2 font-medium">
+                    NO ESTÁ PERMITIDO REALIZAR FOTOS NI VÍDEOS con cámaras o móviles durante la ceremonia para respetar el trascurso de la celebración.
+                </p>
+            </div>
+
+            <!-- Aparcamiento y Accesos -->
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800 shadow-sm space-y-3">
+                <h3 class="font-bold text-slate-800 dark:text-slate-200">🚗 Aparcamiento y Accesos</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">
+                    El aparcamiento disponible será el del <strong>tercer cinturón</strong>. Allí habrá una persona encargada de indicaros dónde aparcar. Os agradeceríamos que lo hagáis en el sitio concreto que os digan para facilitar la máxima ocupación.
+                </p>
+                <div class="mt-3">
+                    <p class="text-sm font-semibold mb-1">Una vez aparcado, opciones de acceso:</p>
+                    <ul class="list-disc pl-5 text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                        <li>Entrar por el recreo de primer ciclo y subir las escaleras (entrada al colegio).</li>
+                        <li><strong>Sin escaleras:</strong> Salir a la calle por la barrera, bordear la tapia por la calle <em>Vázquez de Mella</em> y acceder a la iglesia por la calle <em>Pedro Arrupe</em>.</li>
+                    </ul>
+                </div>
+                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded mt-3">
+                    <p class="text-xs text-amber-800 dark:text-amber-400"><strong>Por favor:</strong> Una vez terminada la celebración, os rogamos retirar los coches lo antes posible para poder cerrar el recinto.</p>
+                </div>
+            </div>
+
+            <a href="https://maps.google.com/?q=Calle+Pedro+Arrupe+Zaragoza" target="_blank" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold shadow-md">Cómo llegar a C/ Pedro Arrupe</a>
         </div>
 
+        <!-- PESTAÑA: RESTAURANTE -->
         <div id="restaurante" class="tab-content hidden space-y-4">
             <h2 class="text-2xl font-bold">🍽️ El Banquete</h2>
-            <p class="text-lg">14:00 en Restaurante Celebraciones.</p>
-            <a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold">Cómo llegar</a>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-lg text-blue-600">Restaurante Torreluna</h3>
+                <p class="text-slate-600 dark:text-slate-400 mt-2">C. de Miguel Servet, 193, 50013 Zaragoza</p>
+            </div>
+            <a href="https://maps.google.com/?q=Restaurante+Torreluna+Zaragoza" target="_blank" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold shadow-md">Cómo llegar (Google Maps)</a>
         </div>
 
-        <div id="mesas" class="tab-content hidden space-y-6">
+        <!-- PESTAÑA: MESAS -->
+        <div id="mesas" class="tab-content hidden space-y-4">
             <h2 class="text-2xl font-bold">🪑 Ubicación de Mesas</h2>
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800">
-                <h3 class="font-bold text-blue-600">Mesa 1</h3>
-                <p>Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</p>
+            
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-lg text-blue-600 border-b border-slate-100 dark:border-slate-700 pb-2 mb-2">Mesa 1</h3>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Loli, Juan Luis (Padre), Luis, Mari Carmen, Juan Luis (Abuelo), Teresa, Ana, Ángel, Luis Antonio, Pilar.
+                </p>
             </div>
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800">
-                <h3 class="font-bold text-blue-600">Mesa 2</h3>
-                <p>Javi, Marta, Lucia, Jorge, Pablo, Laura, Diego, Sara</p>
+            
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-lg text-blue-600 border-b border-slate-100 dark:border-slate-700 pb-2 mb-2">Mesa 2 (Niños)</h3>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Samuel, Lucía, Nadia, Iria, Adrián, Andrés, Alberto.
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-lg text-blue-600 border-b border-slate-100 dark:border-slate-700 pb-2 mb-2">Mesa 3</h3>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Beatriz, Sara, Diego, Diego, Laura, Álvaro.
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800 shadow-sm">
+                <h3 class="font-bold text-lg text-blue-600 border-b border-slate-100 dark:border-slate-700 pb-2 mb-2">Mesa 4</h3>
+                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                    Fernando, Jéssica, Ruth, Antonio, Lidia, Gonzalo, Pablo, Natalia.
+                </p>
             </div>
         </div>
 
+        <!-- PESTAÑA: FIESTA -->
         <div id="fiesta" class="tab-content hidden text-center space-y-4">
-            <div class="text-6xl">🎶</div>
-            <h2 class="text-2xl font-bold">La Celebración</h2>
-            <p class="text-lg">17:00 en los jardines. ¡Barra libre y música!</p>
+            <div class="text-6xl mt-8">🎶</div>
+            <h2 class="text-2xl font-bold mt-4">La Celebración</h2>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border dark:border-slate-800 shadow-sm mt-4 text-left">
+                <p class="text-lg text-slate-700 dark:text-slate-300">
+                    Después del banquete en Torreluna, pasaremos a la zona de celebración. ¡Habrá tiempo para disfrutar todos juntos!
+                </p>
+            </div>
         </div>
     </main>
 
