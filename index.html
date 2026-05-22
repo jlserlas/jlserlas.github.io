@@ -3,52 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunión</title>
+    <title>Comunión - Información</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
-    <!-- Menú Desplegable -->
-    <nav class="bg-white dark:bg-slate-900 p-4 shadow-md sticky top-0 z-50">
-        <div class="flex justify-between items-center">
-            <h1 class="font-bold text-xl">Comunión</h1>
-            <button onclick="document.getElementById('menu').classList.toggle('hidden')" class="text-2xl">☰</button>
-            <button onclick="document.documentElement.classList.toggle('dark')" class="text-xl">🌓</button>
-        </div>
-        <div id="menu" class="hidden mt-4 flex flex-col gap-2">
-            <button onclick="showTab('inicio')" class="py-3 text-left border-b">Inicio</button>
-            <button onclick="showTab('ceremonia')" class="py-3 text-left border-b">Ceremonia</button>
-            <button onclick="showTab('restaurante')" class="py-3 text-left border-b">Restaurante</button>
-            <button onclick="showTab('mesas')" class="py-3 text-left border-b">Mesas</button>
-        </div>
-    </nav>
+    <!-- Header Fijo -->
+    <header class="bg-white dark:bg-slate-900 shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
+        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="text-2xl p-2">☰</button>
+        <h1 class="font-bold text-xl">Comunión</h1>
+        <button onclick="document.documentElement.classList.toggle('dark')" class="text-2xl p-2">🌓</button>
+    </header>
 
-    <main class="p-6 max-w-xl mx-auto space-y-6">
-        <div id="inicio" class="tab-content">
-            <h2 class="text-2xl font-bold">Bienvenidos</h2>
-            <p class="text-lg">Toda la info de la comunión aquí.</p>
+    <!-- Sidebar Lateral -->
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white dark:bg-slate-900 shadow-2xl transform -translate-x-full transition-transform z-50 p-6">
+        <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="mb-8 text-xl font-bold">✕ Cerrar</button>
+        <div class="flex flex-col gap-6 text-lg font-semibold">
+            <button onclick="showTab('inicio')">Inicio</button>
+            <button onclick="showTab('ceremonia')">Ceremonia</button>
+            <button onclick="showTab('restaurante')">Restaurante</button>
+            <button onclick="showTab('mesas')">Mesas</button>
+            <button onclick="showTab('fiesta')">Fiesta</button>
+        </div>
+    </div>
+
+    <main class="max-w-md mx-auto p-6 space-y-8">
+        <!-- INICIO -->
+        <div id="inicio" class="tab-content block text-center space-y-4">
+            <div class="text-6xl">🕊️</div>
+            <h2 class="text-2xl font-bold">¡Bienvenidos!</h2>
+            <p class="text-lg">Hemos preparado esta web para que tengáis todos los detalles a mano. ¡Qué ganas de veros!</p>
         </div>
 
-        <div id="ceremonia" class="tab-content hidden">
+        <!-- CEREMONIA -->
+        <div id="ceremonia" class="tab-content hidden space-y-4">
             <h2 class="text-2xl font-bold">⛪ Ceremonia</h2>
-            <p class="text-lg mb-4">12:00 | Parroquia San Ejemplo</p>
+            <p class="text-lg">11:30 en puerta, 12:00 inicio puntual.</p>
             <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold">Cómo llegar</a>
         </div>
 
-        <div id="restaurante" class="tab-content hidden">
-            <h2 class="text-2xl font-bold">🍽️ Restaurante</h2>
-            <p class="text-lg mb-4">14:00 | Restaurante Celebraciones</p>
+        <!-- RESTAURANTE -->
+        <div id="restaurante" class="tab-content hidden space-y-4">
+            <h2 class="text-2xl font-bold">🍽️ El Banquete</h2>
+            <p class="text-lg">14:00 en Restaurante Celebraciones.</p>
             <a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold">Cómo llegar</a>
         </div>
 
+        <!-- MESAS -->
         <div id="mesas" class="tab-content hidden space-y-4">
-            <h2 class="text-2xl font-bold">🪑 Mesas</h2>
-            <div class="bg-white dark:bg-slate-900 p-4 border rounded-xl">
+            <h2 class="text-2xl font-bold">🪑 Ubicación de Mesas</h2>
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800">
                 <h3 class="font-bold text-blue-600">Mesa 1</h3>
                 <p>Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</p>
             </div>
-            <!-- Añade más mesas igual que arriba -->
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800">
+                <h3 class="font-bold text-blue-600">Mesa 2</h3>
+                <p>Javi, Marta, Lucia, Jorge, Pablo, Laura, Diego, Sara</p>
+            </div>
+        </div>
+
+        <!-- FIESTA -->
+        <div id="fiesta" class="tab-content hidden text-center space-y-4">
+            <div class="text-6xl">🎶</div>
+            <h2 class="text-2xl font-bold">La Celebración</h2>
+            <p class="text-lg">17:00 en los jardines. ¡Barra libre y música!</p>
         </div>
     </main>
 
@@ -56,7 +75,7 @@
         function showTab(id) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
-            document.getElementById('menu').classList.add('hidden');
+            document.getElementById('sidebar').classList.add('-translate-x-full');
         }
     </script>
 </body>
