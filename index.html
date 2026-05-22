@@ -20,17 +20,17 @@
     <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white dark:bg-slate-900 shadow-2xl transform -translate-x-full transition-transform z-50 p-6">
         <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="mb-8 text-xl font-bold">✕ Cerrar</button>
         <div class="flex flex-col gap-6 text-lg font-semibold">
-            <button onclick="showTab('inicio')">Inicio</button>
-            <button onclick="showTab('ceremonia')">Ceremonia</button>
-            <button onclick="showTab('restaurante')">Restaurante</button>
-            <button onclick="showTab('mesas')">Mesas</button>
-            <button onclick="showTab('fiesta')">Fiesta</button>
+            <button onclick="showTab('inicio')" class="flex items-center gap-3">🏠 Inicio</button>
+            <button onclick="showTab('ceremonia')" class="flex items-center gap-3">⛪ Ceremonia</button>
+            <button onclick="showTab('restaurante')" class="flex items-center gap-3">🍽️ Restaurante</button>
+            <button onclick="showTab('mesas')" class="flex items-center gap-3">🪑 Mesas</button>
+            <button onclick="showTab('fiesta')" class="flex items-center gap-3">🎶 Fiesta</button>
         </div>
     </div>
 
     <main class="max-w-md mx-auto p-6 space-y-8">
         
-        <!-- INICIO CON ENLACES DIRECTOS -->
+        <!-- INICIO -->
         <div id="inicio" class="tab-content block text-center space-y-6">
             <div class="text-6xl">🕊️</div>
             <h2 class="text-2xl font-bold">¡Bienvenidos!</h2>
@@ -83,7 +83,7 @@
             document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
             document.getElementById('sidebar').classList.add('-translate-x-full');
-            window.scrollTo(0, 0); // Vuelve al inicio de la página al cambiar
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
