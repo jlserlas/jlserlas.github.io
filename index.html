@@ -6,64 +6,77 @@
     <title>Comunión - Información</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Lógica para cambiar modo oscuro/claro
-        function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
+        // Configuración para que el modo oscuro sea manual con el botón
+        tailwind.config = {
+            darkMode: 'class',
         }
     </script>
-    <style>
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .tab-btn.active { border-bottom-color: #3b82f6; color: #3b82f6; }
-    </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
 
     <!-- Botón Modo Oscuro -->
     <div class="fixed top-4 right-4 z-50">
-        <button onclick="toggleTheme()" class="p-2 bg-slate-200 dark:bg-slate-700 rounded-full shadow-lg text-sm">🌓</button>
+        <button onclick="document.documentElement.classList.toggle('dark')" class="p-3 bg-slate-200 dark:bg-slate-700 rounded-full shadow-lg text-lg">🌓</button>
     </div>
 
     <header class="bg-white dark:bg-slate-900 shadow-md pt-10 pb-6 px-4 text-center">
         <h1 class="text-3xl font-bold">Comunión</h1>
     </header>
 
-    <nav class="bg-white dark:bg-slate-900 sticky top-0 z-40 shadow-sm flex justify-around border-b border-slate-200 dark:border-slate-800">
-        <button onclick="showTab('inicio', this)" class="tab-btn active flex-1 py-4 text-lg font-semibold border-b-2">Inicio</button>
-        <button onclick="showTab('ceremonia', this)" class="tab-btn flex-1 py-4 text-lg font-semibold border-b-2">Ceremonia</button>
-        <button onclick="showTab('mesas', this)" class="tab-btn flex-1 py-4 text-lg font-semibold border-b-2">Mesas</button>
+    <nav class="bg-white dark:bg-slate-900 sticky top-0 z-40 shadow-sm flex overflow-x-auto whitespace-nowrap border-b border-slate-200 dark:border-slate-800">
+        <button onclick="showTab('inicio', this)" class="tab-btn active flex-1 py-4 px-6 text-lg font-semibold border-b-2 border-blue-600 text-blue-600">Inicio</button>
+        <button onclick="showTab('ceremonia', this)" class="tab-btn flex-1 py-4 px-6 text-lg font-semibold border-b-2 border-transparent">Ceremonia</button>
+        <button onclick="showTab('restaurante', this)" class="tab-btn flex-1 py-4 px-6 text-lg font-semibold border-b-2 border-transparent">Restaurante</button>
+        <button onclick="showTab('mesas', this)" class="tab-btn flex-1 py-4 px-6 text-lg font-semibold border-b-2 border-transparent">Mesas</button>
+        <button onclick="showTab('fiesta', this)" class="tab-btn flex-1 py-4 px-6 text-lg font-semibold border-b-2 border-transparent">Fiesta</button>
     </nav>
 
-    <main class="max-w-xl mx-auto p-6 space-y-6">
-
-        <div id="inicio" class="tab-content active space-y-4">
+    <main class="max-w-xl mx-auto p-6 space-y-8">
+        <div id="inicio" class="tab-content block space-y-4">
             <h2 class="text-2xl font-bold">¡Bienvenidos!</h2>
-            <p class="text-lg leading-relaxed">Hemos creado esta web para que tengáis toda la información de mañana a mano.</p>
+            <p class="text-lg">Toda la info para mañana a mano.</p>
         </div>
 
-        <div id="ceremonia" class="tab-content space-y-4">
+        <div id="ceremonia" class="tab-content hidden space-y-4">
             <h2 class="text-2xl font-bold">⛪ Ceremonia</h2>
-            <p class="text-lg">Hora: 12:00 | Lugar: Parroquia San Ejemplo</p>
-            <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold text-lg">Cómo llegar (Google Maps)</a>
+            <p class="text-lg">Hora: 12:00 | Parroquia San Ejemplo</p>
+            <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold text-lg">Cómo llegar</a>
         </div>
 
-        <div id="mesas" class="tab-content space-y-4">
-            <h2 class="text-2xl font-bold">🪑 Mesas</h2>
+        <div id="restaurante" class="tab-content hidden space-y-4">
+            <h2 class="text-2xl font-bold">🍽️ Restaurante</h2>
+            <p class="text-lg">Hora: 14:00 | Restaurante Celebraciones</p>
+            <a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold text-lg">Cómo llegar</a>
+        </div>
+
+        <div id="mesas" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold">🪑 Ubicación de Mesas</h2>
             <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border dark:border-slate-800 shadow-sm">
                 <h3 class="text-xl font-bold text-blue-600">Mesa 1</h3>
-                <p class="text-lg mt-2">Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</p>
+                <p class="text-lg">Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</p>
             </div>
-            <!-- Duplica este bloque div para otras mesas -->
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border dark:border-slate-800 shadow-sm">
+                <h3 class="text-xl font-bold text-blue-600">Mesa 2</h3>
+                <p class="text-lg">Javi, Marta, Lucia, Jorge, Pablo, Laura, Diego, Sara</p>
+            </div>
         </div>
 
+        <div id="fiesta" class="tab-content hidden space-y-4">
+            <h2 class="text-2xl font-bold">🎶 Fiesta</h2>
+            <p class="text-lg">A partir de las 17:00 en los jardines.</p>
+        </div>
     </main>
 
     <script>
         function showTab(tabId, btn) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active', 'border-blue-600', 'text-blue-600');
+                b.classList.add('border-transparent');
+            });
+            document.getElementById(tabId).style.display = 'block';
+            btn.classList.add('active', 'border-blue-600', 'text-blue-600');
+            btn.classList.remove('border-transparent');
         }
     </script>
 </body>
