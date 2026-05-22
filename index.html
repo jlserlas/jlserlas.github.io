@@ -12,7 +12,7 @@
     <!-- Header Fijo -->
     <header class="bg-white dark:bg-slate-900 shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
         <button onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')" class="text-2xl p-2">☰</button>
-        <h1 class="font-bold text-xl">Comunión</h1>
+        <button onclick="showTab('inicio')" class="font-bold text-xl">Comunión</button>
         <button onclick="document.documentElement.classList.toggle('dark')" class="text-2xl p-2">🌓</button>
     </header>
 
@@ -29,11 +29,18 @@
     </div>
 
     <main class="max-w-md mx-auto p-6 space-y-8">
-        <!-- INICIO -->
-        <div id="inicio" class="tab-content block text-center space-y-4">
+        
+        <!-- INICIO CON ENLACES DIRECTOS -->
+        <div id="inicio" class="tab-content block text-center space-y-6">
             <div class="text-6xl">🕊️</div>
             <h2 class="text-2xl font-bold">¡Bienvenidos!</h2>
-            <p class="text-lg">Hemos preparado esta web para que tengáis todos los detalles a mano. ¡Qué ganas de veros!</p>
+            <p class="text-lg">Toca cualquier sección para ver los detalles:</p>
+            <div class="grid grid-cols-1 gap-4">
+                <button onclick="showTab('ceremonia')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">⛪ Ceremonia</button>
+                <button onclick="showTab('restaurante')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🍽️ Restaurante</button>
+                <button onclick="showTab('mesas')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🪑 Mesas</button>
+                <button onclick="showTab('fiesta')" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🎶 Fiesta</button>
+            </div>
         </div>
 
         <!-- CEREMONIA -->
@@ -76,6 +83,7 @@
             document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
             document.getElementById('sidebar').classList.add('-translate-x-full');
+            window.scrollTo(0, 0); // Vuelve al inicio de la página al cambiar
         }
     </script>
 </body>
