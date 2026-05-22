@@ -3,84 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunión Samuel - Información</title>
+    <title>Comunión Samuel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     <style>
+        .tab-content { display: none; }
+        .tab-content.block { display: block; }
         .overlay { display: none; }
         .overlay.active { display: block; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen">
 
     <!-- Header -->
-    <header class="bg-white dark:bg-slate-900 shadow-md p-5 flex justify-between items-center sticky top-0 z-50">
+    <header class="bg-white dark:bg-slate-900 shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
         <button onclick="toggleSidebar()" class="text-3xl p-2">☰</button>
-        
-        <button onclick="showTab('inicio', false)" class="font-bold text-xl flex items-center gap-2">
-            Comunión Samuel 🕊️
-        </button>
-
-        <button onclick="document.documentElement.classList.toggle('dark')" class="p-2 transition-all">
-            <svg class="w-8 h-8 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            <svg class="w-8 h-8 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-        </button>
+        <button onclick="showTab('inicio')" class="font-bold text-xl truncate px-2">Comunión Samuel 🕊️</button>
+        <button onclick="document.documentElement.classList.toggle('dark')" class="p-2 text-2xl">🌓</button>
     </header>
 
     <!-- Overlay y Sidebar -->
     <div id="overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-40 overlay"></div>
-    <div id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white dark:bg-slate-900 shadow-2xl transform -translate-x-full transition-transform z-50 p-8">
-        <button onclick="toggleSidebar()" class="mb-10 text-2xl font-bold">✕ Cerrar</button>
-        <div class="flex flex-col gap-8 text-xl font-semibold">
-            <button onclick="showTab('inicio', true)" class="flex items-center gap-4">🏠 Inicio</button>
-            <button onclick="showTab('ceremonia', true)" class="flex items-center gap-4">⛪ Ceremonia</button>
-            <button onclick="showTab('restaurante', true)" class="flex items-center gap-4">🍽️ Restaurante</button>
-            <button onclick="showTab('mesas', true)" class="flex items-center gap-4">🪑 Mesas</button>
-            <button onclick="showTab('fiesta', true)" class="flex items-center gap-4">🎶 Fiesta</button>
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-3/4 max-w-xs bg-white dark:bg-slate-900 shadow-2xl transform -translate-x-full transition-transform z-50 p-6 space-y-8">
+        <button onclick="toggleSidebar()" class="text-2xl font-bold">✕ Cerrar</button>
+        <div class="flex flex-col gap-6 text-xl font-bold">
+            <button onclick="showTab('inicio')" class="text-left">🏠 Inicio</button>
+            <button onclick="showTab('ceremonia')" class="text-left">⛪ Ceremonia</button>
+            <button onclick="showTab('restaurante')" class="text-left">🍽️ Restaurante</button>
+            <button onclick="showTab('mesas')" class="text-left">🪑 Mesas</button>
+            <button onclick="showTab('fiesta')" class="text-left">🎶 Fiesta</button>
         </div>
     </div>
 
     <!-- Contenido -->
-    <main class="max-w-md mx-auto p-6 space-y-10">
+    <main class="p-4 space-y-6">
         
-        <div id="inicio" class="tab-content block text-center space-y-8">
-            <div class="text-7xl">🕊️</div>
+        <div id="inicio" class="tab-content block text-center space-y-6">
+            <div class="text-6xl">🕊️</div>
             <h2 class="text-3xl font-bold">¡Bienvenidos!</h2>
-            <p class="text-xl">Toca cualquier sección para ver los detalles:</p>
-            <div class="grid grid-cols-1 gap-6">
-                <button onclick="showTab('ceremonia', false)" class="w-full py-5 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-2xl font-bold text-xl shadow-md">⛪ Ceremonia</button>
-                <button onclick="showTab('restaurante', false)" class="w-full py-5 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-2xl font-bold text-xl shadow-md">🍽️ Restaurante</button>
-                <button onclick="showTab('mesas', false)" class="w-full py-5 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-2xl font-bold text-xl shadow-md">🪑 Mesas</button>
-                <button onclick="showTab('fiesta', false)" class="w-full py-5 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-2xl font-bold text-xl shadow-md">🎶 Fiesta</button>
+            <p class="text-xl">Selecciona una sección:</p>
+            <div class="flex flex-col gap-4">
+                <button onclick="showTab('ceremonia')" class="py-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold text-xl shadow-sm">⛪ Ceremonia</button>
+                <button onclick="showTab('restaurante')" class="py-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold text-xl shadow-sm">🍽️ Restaurante</button>
+                <button onclick="showTab('mesas')" class="py-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold text-xl shadow-sm">🪑 Mesas</button>
+                <button onclick="showTab('fiesta')" class="py-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold text-xl shadow-sm">🎶 Fiesta</button>
             </div>
         </div>
 
-        <div id="ceremonia" class="tab-content hidden space-y-6">
+        <div id="ceremonia" class="tab-content space-y-6">
             <h2 class="text-3xl font-bold">⛪ Ceremonia</h2>
-            <p class="text-xl">11:30 en puerta, 12:00 inicio puntual.</p>
+            <p class="text-xl leading-relaxed">11:30 en la puerta.<br>12:00 inicio puntual.</p>
             <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-6 bg-blue-600 text-white text-center rounded-2xl font-bold text-xl">Cómo llegar</a>
         </div>
 
-        <div id="restaurante" class="tab-content hidden space-y-6">
+        <div id="restaurante" class="tab-content space-y-6">
             <h2 class="text-3xl font-bold">🍽️ El Banquete</h2>
-            <p class="text-xl">14:00 en Restaurante Celebraciones.</p>
+            <p class="text-xl leading-relaxed">14:00 en Restaurante Celebraciones.</p>
             <a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" class="block w-full py-6 bg-blue-600 text-white text-center rounded-2xl font-bold text-xl">Cómo llegar</a>
         </div>
 
-        <div id="mesas" class="tab-content hidden space-y-8">
-            <h2 class="text-3xl font-bold">🪑 Ubicación de Mesas</h2>
-            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border dark:border-slate-800 shadow-sm">
-                <h3 class="font-bold text-blue-600 text-2xl">Mesa 1</h3>
+        <div id="mesas" class="tab-content space-y-6">
+            <h2 class="text-3xl font-bold">🪑 Mesas</h2>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border dark:border-slate-700 shadow-sm">
+                <h3 class="font-bold text-blue-500 text-2xl">Mesa 1</h3>
                 <p class="text-xl mt-2">Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</p>
-            </div>
-            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border dark:border-slate-800 shadow-sm">
-                <h3 class="font-bold text-blue-600 text-2xl">Mesa 2</h3>
-                <p class="text-xl mt-2">Javi, Marta, Lucia, Jorge, Pablo, Laura, Diego, Sara</p>
             </div>
         </div>
 
-        <div id="fiesta" class="tab-content hidden text-center space-y-6">
-            <div class="text-7xl">🎶</div>
+        <div id="fiesta" class="tab-content text-center space-y-6">
+            <div class="text-6xl">🎶</div>
             <h2 class="text-3xl font-bold">La Celebración</h2>
             <p class="text-xl">17:00 en los jardines. ¡Barra libre y música!</p>
         </div>
@@ -91,58 +82,11 @@
             document.getElementById('sidebar').classList.toggle('-translate-x-full');
             document.getElementById('overlay').classList.toggle('active');
         }
-
-        function showTab(id, fromSidebar) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-            if (fromSidebar) {
-                toggleSidebar();
-            }
-            window.scrollTo(0, 0);
-        }
-    </script>
-</body>
-</html>
-="bg-white dark:bg-slate-900 p-4 rounded-xl border dark:border-slate-800 shadow-sm">
-                <h3 class="font-bold text-lg text-blue-600 border-b border-slate-100 dark:border-slate-700 pb-2 mb-2">Mesa 4</h3>
-                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Fernando, Jéssica, Ruth, Antonio, Lidia, Gonzalo, Pablo, Natalia.
-                </p>
-            </div>
-        </div>
-
-        <!-- PESTAÑA: FIESTA -->
-        <div id="fiesta" class="tab-content hidden text-center space-y-4">
-            <div class="text-6xl mt-8">🎶</div>
-            <h2 class="text-2xl font-bold mt-4">La Celebración</h2>
-            <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border dark:border-slate-800 shadow-sm mt-4 text-left">
-                <p class="text-lg text-slate-700 dark:text-slate-300">
-                    Después del banquete en Torreluna, pasaremos a la zona de celebración. ¡Habrá tiempo para disfrutar todos juntos!
-                </p>
-            </div>
-
-            <!-- Aviso Animación Infantil -->
-            <div class="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-xl border border-orange-100 dark:border-orange-800/50 text-left">
-                <h3 class="font-bold text-orange-800 dark:text-orange-300 flex items-center gap-2">🧦 Nota para los peques</h3>
-                <p class="text-sm text-orange-700 dark:text-orange-400 mt-2 font-medium">
-                    Es muy recomendable llevar <strong>calcetines de repuesto</strong> para los niños. Habrá animación infantil y van a estar jugando sin parar.
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('-translate-x-full');
-            document.getElementById('overlay').classList.toggle('active');
-        }
-
-        function showTab(id, fromSidebar) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-            if (fromSidebar) {
-                toggleSidebar();
-            }
+        function showTab(id) {
+            document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+            document.getElementById('sidebar').classList.add('-translate-x-full');
+            document.getElementById('overlay').classList.remove('active');
             window.scrollTo(0, 0);
         }
     </script>
