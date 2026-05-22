@@ -16,7 +16,7 @@
     <!-- Header -->
     <header class="bg-white dark:bg-slate-900 shadow-md p-4 flex justify-between items-center sticky top-0 z-50">
         <button onclick="toggleSidebar()" class="text-2xl p-2">☰</button>
-        <button onclick="showTab('inicio', true)" class="font-bold text-xl">Comunión</button>
+        <button onclick="showTab('inicio', false)" class="font-bold text-xl">Comunión</button>
         <button onclick="document.documentElement.classList.toggle('dark')" class="text-2xl p-2">🌓</button>
     </header>
 
@@ -41,14 +41,13 @@
             <h2 class="text-2xl font-bold">¡Bienvenidos!</h2>
             <p class="text-lg">Toca cualquier sección para ver los detalles:</p>
             <div class="grid grid-cols-1 gap-4">
-                <button onclick="showTab('ceremonia', false)" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold">⛪ Ceremonia</button>
-                <button onclick="showTab('restaurante', false)" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold">🍽️ Restaurante</button>
-                <button onclick="showTab('mesas', false)" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold">🪑 Mesas</button>
-                <button onclick="showTab('fiesta', false)" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold">🎶 Fiesta</button>
+                <button onclick="showTab('ceremonia', false)" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">⛪ Ceremonia</button>
+                <button onclick="showTab('restaurante', false)" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🍽️ Restaurante</button>
+                <button onclick="showTab('mesas', false)" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🪑 Mesas</button>
+                <button onclick="showTab('fiesta', false)" class="w-full py-4 bg-white dark:bg-slate-900 border-2 border-blue-200 rounded-xl font-bold shadow-sm">🎶 Fiesta</button>
             </div>
         </div>
 
-        <!-- Pestañas (hidden por defecto) -->
         <div id="ceremonia" class="tab-content hidden space-y-4">
             <h2 class="text-2xl font-bold">⛪ Ceremonia</h2>
             <p class="text-lg">11:30 en puerta, 12:00 inicio puntual.</p>
@@ -85,7 +84,7 @@
             document.getElementById('sidebar').classList.toggle('-translate-x-full');
             document.getElementById('overlay').classList.toggle('active');
         }
-        // 'fromSidebar' nos indica si venimos del menú para cerrarlo o no
+
         function showTab(id, fromSidebar) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
