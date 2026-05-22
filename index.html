@@ -4,150 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunión - Información</title>
-    <!-- Tailwind CSS para un diseño moderno y adaptado a móviles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Estilos para ocultar/mostrar las pestañas suavemente */
-        .tab-content { 
-            display: none; 
-        }
-        .tab-content.active { 
-            display: block; 
-            animation: fadeIn 0.4s ease-in-out; 
-        }
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(5px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-        /* Estilo para la pestaña seleccionada */
-        .tab-btn.active { 
-            border-bottom-color: #3b82f6; /* Azul moderno */
-            color: #1d4ed8; 
-            font-weight: 600;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .tab-btn.active { border-bottom-color: #3b82f6; }
+        @media (prefers-color-scheme: dark) { .tab-btn.active { border-bottom-color: #60a5fa; } }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans antialiased transition-colors duration-300">
 
-    <!-- Encabezado Principal -->
-    <header class="bg-white shadow-sm pt-8 pb-4 px-4 text-center">
-        <h1 class="text-3xl font-serif text-slate-900 mb-2">¡Bienvenidos a la Comunión!</h1>
-        <p class="text-sm text-slate-500">Toda la información para mañana, 23 de mayo</p>
+    <header class="bg-white dark:bg-slate-800 shadow-sm pt-8 pb-4 px-4 text-center">
+        <h1 class="text-3xl font-serif text-slate-900 dark:text-white mb-2">¡Bienvenidos a la Comunión!</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Toda la información para mañana, 23 de mayo</p>
     </header>
 
-    <!-- Menú de Pestañas (Sticky para que siempre se vea en móvil) -->
-    <nav class="bg-white sticky top-0 z-10 shadow-md flex justify-around border-b border-slate-200">
-        <button onclick="showTab('inicio', this)" class="tab-btn active flex-1 py-3 text-sm text-slate-600 border-b-2 border-transparent transition-colors">Inicio</button>
-        <button onclick="showTab('ceremonia', this)" class="tab-btn flex-1 py-3 text-sm text-slate-600 border-b-2 border-transparent transition-colors">Ceremonia</button>
-        <button onclick="showTab('restaurante', this)" class="tab-btn flex-1 py-3 text-sm text-slate-600 border-b-2 border-transparent transition-colors">Restaurante</button>
-        <button onclick="showTab('fiesta', this)" class="tab-btn flex-1 py-3 text-sm text-slate-600 border-b-2 border-transparent transition-colors">Fiesta</button>
+    <nav class="bg-white dark:bg-slate-800 sticky top-0 z-10 shadow-md flex justify-around border-b border-slate-200 dark:border-slate-700 transition-colors">
+        <button onclick="showTab('inicio', this)" class="tab-btn active flex-1 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 border-b-2 border-transparent">Inicio</button>
+        <button onclick="showTab('ceremonia', this)" class="tab-btn flex-1 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 border-b-2 border-transparent">Ceremonia</button>
+        <button onclick="showTab('restaurante', this)" class="tab-btn flex-1 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 border-b-2 border-transparent">Restaurante</button>
+        <button onclick="showTab('fiesta', this)" class="tab-btn flex-1 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 border-b-2 border-transparent">Fiesta</button>
     </nav>
 
-    <!-- Contenedor Principal -->
     <main class="max-w-md mx-auto p-4 pb-12">
 
         <!-- PESTAÑA: INICIO -->
         <div id="inicio" class="tab-content active">
-            <div class="bg-white rounded-xl shadow-sm p-6 text-center mt-4 border border-slate-100">
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 text-center mt-4 border dark:border-slate-700">
                 <div class="text-4xl mb-4">🕊️</div>
-                <h2 class="text-xl font-semibold mb-3">¡Qué ganas de veros!</h2>
-                <p class="text-slate-600 leading-relaxed text-sm">
-                    Hemos preparado esta web rápida para que tengáis a mano todos los horarios y ubicaciones en vuestro móvil. <br><br>
-                    Navegad por las pestañas de arriba para ver los detalles. ¡Nos vemos mañana para celebrar este día tan especial en familia!
-                </p>
+                <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">¡Qué ganas de veros!</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Navegad por las pestañas de arriba para ver los detalles. ¡Nos vemos mañana!</p>
             </div>
         </div>
 
         <!-- PESTAÑA: CEREMONIA -->
         <div id="ceremonia" class="tab-content">
-            <div class="bg-white rounded-xl shadow-sm p-6 mt-4 border border-slate-100">
-                <h2 class="text-xl font-semibold text-blue-700 mb-4 flex items-center gap-2">
-                    ⛪ La Ceremonia
-                </h2>
-                
-                <div class="mb-4">
-                    <h3 class="font-bold text-slate-800">⏰ Horario</h3>
-                    <p class="text-sm text-slate-600 mt-1">Os esperamos a las <strong>11:30</strong> en la puerta para acomodarnos. Empieza puntual a las 12:00.</p>
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700">
+                <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-4">⛪ La Ceremonia</h2>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">11:30 en la puerta. Empieza puntual a las 12:00.</p>
+                <div class="rounded-lg overflow-hidden border mb-3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.3323061616496!2d-0.8816654845593817!3d41.64858907923984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914ea20f09bb9%3A0x67db23a54b9d5c31!2sZaragoza!5e0!3m2!1ses!2ses!4v1684345678901!5m2!1ses!2ses" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-
-                <div class="mb-4">
-                    <h3 class="font-bold text-slate-800">📍 Ubicación</h3>
-                    <p class="text-sm text-slate-600 mt-1 mb-3">Parroquia de San Ejemplo (Zaragoza)</p>
-                    <!-- Mapa de Google -->
-                    <div class="rounded-lg overflow-hidden border border-slate-200">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.3323061616496!2d-0.8816654845593817!3d41.64858907923984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914ea20f09bb9%3A0x67db23a54b9d5c31!2sZaragoza!5e0!3m2!1ses!2ses!4v1684345678901!5m2!1ses!2ses" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
+                <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" target="_blank" class="block w-full py-2 bg-blue-600 text-white text-center rounded-lg font-semibold hover:bg-blue-700">Cómo llegar (Google Maps)</a>
             </div>
         </div>
 
         <!-- PESTAÑA: RESTAURANTE -->
         <div id="restaurante" class="tab-content">
-            <div class="bg-white rounded-xl shadow-sm p-6 mt-4 border border-slate-100">
-                <h2 class="text-xl font-semibold text-blue-700 mb-4 flex items-center gap-2">
-                    🍽️ El Banquete
-                </h2>
-                
-                <div class="mb-4">
-                    <h3 class="font-bold text-slate-800">⏰ Horario</h3>
-                    <p class="text-sm text-slate-600 mt-1">El picoteo de bienvenida en la terraza empezará sobre las <strong>14:00</strong>.</p>
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700">
+                <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-4">🍽️ El Banquete</h2>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Picoteo de bienvenida a las 14:00.</p>
+                <div class="rounded-lg overflow-hidden border mb-3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.3323061616496!2d-0.8816654845593817!3d41.64858907923984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914ea20f09bb9%3A0x67db23a54b9d5c31!2sZaragoza!5e0!3m2!1ses!2ses!4v1684345678901!5m2!1ses!2ses" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-
-                <div class="mb-4 bg-orange-50 border-l-4 border-orange-400 p-3 rounded-r">
-                    <h3 class="font-bold text-orange-800 text-sm">⚠️ Aviso Menú</h3>
-                    <p class="text-xs text-orange-700 mt-1">Si alguien tiene alguna alergia o intolerancia de última hora, ¡que nos avise hoy por WhatsApp!</p>
-                </div>
-
-                <div class="mb-4">
-                    <h3 class="font-bold text-slate-800">📍 Ubicación</h3>
-                    <p class="text-sm text-slate-600 mt-1 mb-3">Restaurante Celebraciones</p>
-                    <!-- Mapa de Google -->
-                    <div class="rounded-lg overflow-hidden border border-slate-200">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.3323061616496!2d-0.8816654845593817!3d41.64858907923984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914ea20f09bb9%3A0x67db23a54b9d5c31!2sZaragoza!5e0!3m2!1ses!2ses!4v1684345678901!5m2!1ses!2ses" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
+                <a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" target="_blank" class="block w-full py-2 bg-blue-600 text-white text-center rounded-lg font-semibold hover:bg-blue-700">Cómo llegar (Google Maps)</a>
             </div>
         </div>
 
         <!-- PESTAÑA: FIESTA -->
         <div id="fiesta" class="tab-content">
-            <div class="bg-white rounded-xl shadow-sm p-6 mt-4 border border-slate-100 text-center">
-                <div class="text-4xl mb-4">🎶</div>
-                <h2 class="text-xl font-semibold text-blue-700 mb-4">
-                    La Celebración
-                </h2>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                    Después del postre y los regalos, a partir de las <strong>17:00</strong>, pasaremos a la zona de jardines.
-                </p>
-                <div class="bg-blue-50 text-blue-800 p-4 rounded-lg text-sm mb-4 text-left">
-                    <ul class="list-disc list-inside space-y-2">
-                        <li>Animadores para los niños 🎈</li>
-                        <li>Barra libre para los mayores 🥂</li>
-                        <li>Música y baile 🕺💃</li>
-                    </ul>
-                </div>
-                <p class="font-bold text-slate-800">¡Venid con ganas de pasarlo bien!</p>
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700 text-center">
+                <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-4">🎶 La Celebración</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">A partir de las 17:00 en los jardines. ¡Venid con ganas de disfrutar!</p>
             </div>
         </div>
-
     </main>
 
-    <!-- Script para cambiar las pestañas -->
     <script>
-        function showTab(tabId, buttonElement) {
-            // 1. Ocultar todas las pestañas
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            // 2. Quitar el estilo 'activo' de todos los botones
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            // 3. Mostrar la pestaña seleccionada
+        function showTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'text-blue-600'));
             document.getElementById(tabId).classList.add('active');
-
-            // 4. Poner el estilo 'activo' al botón pulsado
-            buttonElement.classList.add('active');
+            btn.classList.add('active', 'text-blue-600');
         }
     </script>
 </body>
