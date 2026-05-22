@@ -5,62 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunión - Información</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Lógica para cambiar modo oscuro/claro
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
     <style>
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        .tab-btn.active { border-bottom-color: #3b82f6; }
-        @media (prefers-color-scheme: dark) { .tab-btn.active { border-bottom-color: #60a5fa; } }
+        .tab-content.active { display: block; }
+        .tab-btn.active { border-bottom-color: #3b82f6; color: #3b82f6; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans antialiased transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
 
-    <header class="bg-white dark:bg-slate-800 shadow-sm pt-8 pb-4 px-4 text-center">
-        <h1 class="text-3xl font-serif text-slate-900 dark:text-white mb-2">¡Bienvenidos a la Comunión!</h1>
+    <!-- Botón Modo Oscuro -->
+    <div class="fixed top-4 right-4 z-50">
+        <button onclick="toggleTheme()" class="p-2 bg-slate-200 dark:bg-slate-700 rounded-full shadow-lg text-sm">🌓</button>
+    </div>
+
+    <header class="bg-white dark:bg-slate-900 shadow-md pt-10 pb-6 px-4 text-center">
+        <h1 class="text-3xl font-bold">Comunión</h1>
     </header>
 
-    <nav class="bg-white dark:bg-slate-800 sticky top-0 z-10 shadow-md flex justify-around border-b border-slate-200 dark:border-slate-700 overflow-x-auto whitespace-nowrap">
-        <button onclick="showTab('inicio', this)" class="tab-btn active flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Inicio</button>
-        <button onclick="showTab('ceremonia', this)" class="tab-btn flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Ceremonia</button>
-        <button onclick="showTab('restaurante', this)" class="tab-btn flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Restaurante</button>
-        <button onclick="showTab('mesas', this)" class="tab-btn flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Mesas</button>
-        <button onclick="showTab('fiesta', this)" class="tab-btn flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Fiesta</button>
+    <nav class="bg-white dark:bg-slate-900 sticky top-0 z-40 shadow-sm flex justify-around border-b border-slate-200 dark:border-slate-800">
+        <button onclick="showTab('inicio', this)" class="tab-btn active flex-1 py-4 text-lg font-semibold border-b-2">Inicio</button>
+        <button onclick="showTab('ceremonia', this)" class="tab-btn flex-1 py-4 text-lg font-semibold border-b-2">Ceremonia</button>
+        <button onclick="showTab('mesas', this)" class="tab-btn flex-1 py-4 text-lg font-semibold border-b-2">Mesas</button>
     </nav>
 
-    <main class="max-w-md mx-auto p-4 pb-12">
+    <main class="max-w-xl mx-auto p-6 space-y-6">
 
-        <!-- PESTAÑA: INICIO -->
-        <div id="inicio" class="tab-content active"><div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 text-center mt-4 border dark:border-slate-700"><h2 class="text-xl font-semibold mb-3">¡Qué ganas de veros!</h2><p class="text-sm">Navegad por las pestañas para ver los detalles.</p></div></div>
-
-        <!-- PESTAÑA: CEREMONIA -->
-        <div id="ceremonia" class="tab-content"><div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700"><h2 class="text-xl font-semibold text-blue-700 mb-4">⛪ Ceremonia</h2><p class="text-sm mb-4">12:00 en Parroquia San Ejemplo.</p><a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-2 bg-blue-600 text-white text-center rounded-lg font-semibold">Cómo llegar</a></div></div>
-
-        <!-- PESTAÑA: RESTAURANTE -->
-        <div id="restaurante" class="tab-content"><div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700"><h2 class="text-xl font-semibold text-blue-700 mb-4">🍽️ El Banquete</h2><p class="text-sm mb-4">14:00 en Restaurante Celebraciones.</p><a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" class="block w-full py-2 bg-blue-600 text-white text-center rounded-lg font-semibold">Cómo llegar</a></div></div>
-
-        <!-- PESTAÑA: MESAS -->
-        <div id="mesas" class="tab-content">
-            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700">
-                <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-4">🪑 Ubicación de Mesas</h2>
-                <div class="space-y-6">
-                    <div><h3 class="font-bold text-blue-600">Mesa 1 (La Principal)</h3><p class="text-xs text-slate-500">Padres, abuelos, tíos.</p><ul class="text-sm mt-1 list-disc pl-4"><li>Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</li></ul></div>
-                    <div><h3 class="font-bold text-blue-600">Mesa 2</h3><p class="text-xs text-slate-500">Primos y amigos.</p><ul class="text-sm mt-1 list-disc pl-4"><li>Javi, Marta, Lucia, Jorge, Pablo, Laura, Diego, Sara</li></ul></div>
-                    <div><h3 class="font-bold text-blue-600">Mesa 3</h3><p class="text-xs text-slate-500">Amigos de la escuela.</p><ul class="text-sm mt-1 list-disc pl-4"><li>Mateo, Carla, Hugo, Vega, Enzo, Daniela, Leo, Valeria</li></ul></div>
-                    <div><h3 class="font-bold text-blue-600">Mesa 4</h3><p class="text-xs text-slate-500">Familia extensa.</p><ul class="text-sm mt-1 list-disc pl-4"><li>Raul, Beatriz, Hector, Irene, Ivan, Alicia, Oscar</li></ul></div>
-                </div>
-            </div>
+        <div id="inicio" class="tab-content active space-y-4">
+            <h2 class="text-2xl font-bold">¡Bienvenidos!</h2>
+            <p class="text-lg leading-relaxed">Hemos creado esta web para que tengáis toda la información de mañana a mano.</p>
         </div>
 
-        <!-- PESTAÑA: FIESTA -->
-        <div id="fiesta" class="tab-content"><div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700 text-center"><h2 class="text-xl font-semibold text-blue-700 mb-4">🎶 La Celebración</h2><p class="text-sm">A partir de las 17:00 en los jardines.</p></div></div>
+        <div id="ceremonia" class="tab-content space-y-4">
+            <h2 class="text-2xl font-bold">⛪ Ceremonia</h2>
+            <p class="text-lg">Hora: 12:00 | Lugar: Parroquia San Ejemplo</p>
+            <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-bold text-lg">Cómo llegar (Google Maps)</a>
+        </div>
+
+        <div id="mesas" class="tab-content space-y-4">
+            <h2 class="text-2xl font-bold">🪑 Mesas</h2>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border dark:border-slate-800 shadow-sm">
+                <h3 class="text-xl font-bold text-blue-600">Mesa 1</h3>
+                <p class="text-lg mt-2">Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</p>
+            </div>
+            <!-- Duplica este bloque div para otras mesas -->
+        </div>
+
     </main>
 
     <script>
         function showTab(tabId, btn) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'text-blue-600'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active', 'text-blue-600');
+            btn.classList.add('active');
         }
     </script>
 </body>
