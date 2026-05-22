@@ -17,58 +17,42 @@
 
     <header class="bg-white dark:bg-slate-800 shadow-sm pt-8 pb-4 px-4 text-center">
         <h1 class="text-3xl font-serif text-slate-900 dark:text-white mb-2">¡Bienvenidos a la Comunión!</h1>
-        <p class="text-sm text-slate-500 dark:text-slate-400">Toda la información para mañana, 23 de mayo</p>
     </header>
 
-    <nav class="bg-white dark:bg-slate-800 sticky top-0 z-10 shadow-md flex justify-around border-b border-slate-200 dark:border-slate-700 transition-colors">
-        <button onclick="showTab('inicio', this)" class="tab-btn active flex-1 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 border-b-2 border-transparent">Inicio</button>
-        <button onclick="showTab('ceremonia', this)" class="tab-btn flex-1 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 border-b-2 border-transparent">Ceremonia</button>
-        <button onclick="showTab('restaurante', this)" class="tab-btn flex-1 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 border-b-2 border-transparent">Restaurante</button>
-        <button onclick="showTab('fiesta', this)" class="tab-btn flex-1 py-3 text-sm font-medium text-slate-600 dark:text-slate-300 border-b-2 border-transparent">Fiesta</button>
+    <nav class="bg-white dark:bg-slate-800 sticky top-0 z-10 shadow-md flex justify-around border-b border-slate-200 dark:border-slate-700 overflow-x-auto whitespace-nowrap">
+        <button onclick="showTab('inicio', this)" class="tab-btn active flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Inicio</button>
+        <button onclick="showTab('ceremonia', this)" class="tab-btn flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Ceremonia</button>
+        <button onclick="showTab('restaurante', this)" class="tab-btn flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Restaurante</button>
+        <button onclick="showTab('mesas', this)" class="tab-btn flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Mesas</button>
+        <button onclick="showTab('fiesta', this)" class="tab-btn flex-1 py-3 text-xs font-medium border-b-2 border-transparent">Fiesta</button>
     </nav>
 
     <main class="max-w-md mx-auto p-4 pb-12">
 
         <!-- PESTAÑA: INICIO -->
-        <div id="inicio" class="tab-content active">
-            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 text-center mt-4 border dark:border-slate-700">
-                <div class="text-4xl mb-4">🕊️</div>
-                <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">¡Qué ganas de veros!</h2>
-                <p class="text-slate-600 dark:text-slate-400 text-sm">Navegad por las pestañas de arriba para ver los detalles. ¡Nos vemos mañana!</p>
-            </div>
-        </div>
+        <div id="inicio" class="tab-content active"><div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 text-center mt-4 border dark:border-slate-700"><h2 class="text-xl font-semibold mb-3">¡Qué ganas de veros!</h2><p class="text-sm">Navegad por las pestañas para ver los detalles.</p></div></div>
 
         <!-- PESTAÑA: CEREMONIA -->
-        <div id="ceremonia" class="tab-content">
-            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700">
-                <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-4">⛪ La Ceremonia</h2>
-                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">11:30 en la puerta. Empieza puntual a las 12:00.</p>
-                <div class="rounded-lg overflow-hidden border mb-3">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.3323061616496!2d-0.8816654845593817!3d41.64858907923984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914ea20f09bb9%3A0x67db23a54b9d5c31!2sZaragoza!5e0!3m2!1ses!2ses!4v1684345678901!5m2!1ses!2ses" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" target="_blank" class="block w-full py-2 bg-blue-600 text-white text-center rounded-lg font-semibold hover:bg-blue-700">Cómo llegar (Google Maps)</a>
-            </div>
-        </div>
+        <div id="ceremonia" class="tab-content"><div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700"><h2 class="text-xl font-semibold text-blue-700 mb-4">⛪ Ceremonia</h2><p class="text-sm mb-4">12:00 en Parroquia San Ejemplo.</p><a href="https://maps.google.com/?q=Parroquia+de+San+Ejemplo+Zaragoza" class="block w-full py-2 bg-blue-600 text-white text-center rounded-lg font-semibold">Cómo llegar</a></div></div>
 
         <!-- PESTAÑA: RESTAURANTE -->
-        <div id="restaurante" class="tab-content">
+        <div id="restaurante" class="tab-content"><div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700"><h2 class="text-xl font-semibold text-blue-700 mb-4">🍽️ El Banquete</h2><p class="text-sm mb-4">14:00 en Restaurante Celebraciones.</p><a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" class="block w-full py-2 bg-blue-600 text-white text-center rounded-lg font-semibold">Cómo llegar</a></div></div>
+
+        <!-- PESTAÑA: MESAS -->
+        <div id="mesas" class="tab-content">
             <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700">
-                <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-4">🍽️ El Banquete</h2>
-                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Picoteo de bienvenida a las 14:00.</p>
-                <div class="rounded-lg overflow-hidden border mb-3">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2981.3323061616496!2d-0.8816654845593817!3d41.64858907923984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914ea20f09bb9%3A0x67db23a54b9d5c31!2sZaragoza!5e0!3m2!1ses!2ses!4v1684345678901!5m2!1ses!2ses" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-4">🪑 Ubicación de Mesas</h2>
+                <div class="space-y-6">
+                    <div><h3 class="font-bold text-blue-600">Mesa 1 (La Principal)</h3><p class="text-xs text-slate-500">Padres, abuelos, tíos.</p><ul class="text-sm mt-1 list-disc pl-4"><li>Juan, Maria, Luis, Ana, Pedro, Elena, Sofia, Carlos</li></ul></div>
+                    <div><h3 class="font-bold text-blue-600">Mesa 2</h3><p class="text-xs text-slate-500">Primos y amigos.</p><ul class="text-sm mt-1 list-disc pl-4"><li>Javi, Marta, Lucia, Jorge, Pablo, Laura, Diego, Sara</li></ul></div>
+                    <div><h3 class="font-bold text-blue-600">Mesa 3</h3><p class="text-xs text-slate-500">Amigos de la escuela.</p><ul class="text-sm mt-1 list-disc pl-4"><li>Mateo, Carla, Hugo, Vega, Enzo, Daniela, Leo, Valeria</li></ul></div>
+                    <div><h3 class="font-bold text-blue-600">Mesa 4</h3><p class="text-xs text-slate-500">Familia extensa.</p><ul class="text-sm mt-1 list-disc pl-4"><li>Raul, Beatriz, Hector, Irene, Ivan, Alicia, Oscar</li></ul></div>
                 </div>
-                <a href="https://maps.google.com/?q=Restaurante+Celebraciones+Zaragoza" target="_blank" class="block w-full py-2 bg-blue-600 text-white text-center rounded-lg font-semibold hover:bg-blue-700">Cómo llegar (Google Maps)</a>
             </div>
         </div>
 
         <!-- PESTAÑA: FIESTA -->
-        <div id="fiesta" class="tab-content">
-            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700 text-center">
-                <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-4">🎶 La Celebración</h2>
-                <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">A partir de las 17:00 en los jardines. ¡Venid con ganas de disfrutar!</p>
-            </div>
-        </div>
+        <div id="fiesta" class="tab-content"><div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6 mt-4 border dark:border-slate-700 text-center"><h2 class="text-xl font-semibold text-blue-700 mb-4">🎶 La Celebración</h2><p class="text-sm">A partir de las 17:00 en los jardines.</p></div></div>
     </main>
 
     <script>
