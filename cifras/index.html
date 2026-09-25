@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acertijo Matemático</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white; /* Fondo blanco como en la imagen */
+            font-family: sans-serif; /* Una fuente limpia, similar a la de la imagen */
+        }
+        
+        .equation {
+            font-size: 3rem; /* Tamaño de fuente grande */
+            font-weight: bold; /* Texto en negrita */
+            line-height: 1.5; /* Espaciado entre líneas */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* Espacio entre los elementos de la ecuación */
+        }
+
+        .red-text {
+            color: #ff0000; /* Color rojo exacto */
+        }
+
+        .black-text {
+            color: #000000; /* Color negro exacto */
+        }
+    </style>
+</head>
+<body>
+    <div class="flex flex-col items-start gap-4">
+        <!-- Primera línea: 5 (rojo) + (negro) 5 (rojo) = (negro) 2 (negro) -->
+        <div class="equation">
+            <span class="red-text">5</span>
+            <span class="black-text">+</span>
+            <span class="red-text">5</span>
+            <span class="black-text">=</span>
+            <span class="black-text">2</span>
+        </div>
+
+        <!-- Segunda línea: 5 (rojo) + (negro) 2 (rojo) = (negro) 1 (negro) -->
+        <div class="equation">
+            <span class="red-text">5</span>
+            <span class="black-text">+</span>
+            <span class="red-text">2</span>
+            <span class="black-text">=</span>
+            <span class="black-text">1</span>
+        </div>
+
+        <!-- Tercera línea: 4 (negro) + (negro) 3 (rojo) = (negro) 10 (negro) -->
+        <div class="equation">
+            <span class="black-text">4</span>
+            <span class="black-text">+</span>
+            <span class="red-text">3</span>
+            <span class="black-text">=</span>
+            <span class="black-text">10</span>
+        </div>
+    </div>
+</body>
+</html>
