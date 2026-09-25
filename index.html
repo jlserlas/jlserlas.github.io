@@ -71,6 +71,21 @@
 
     </main>
 
+    <!-- Modal Teclado (Para móviles/clics en celdas vacías) -->
+    <div id="keyboard-modal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 flex items-end sm:items-center justify-center sm:p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-slate-100 rounded-t-3xl sm:rounded-2xl shadow-2xl w-full max-w-2xl p-4 sm:p-8 relative transform translate-y-full sm:translate-y-0 sm:scale-95 transition-transform duration-300" id="keyboard-content">
+            <div class="flex justify-between items-center mb-4 px-2">
+                <h3 class="text-lg font-bold text-slate-700">Selecciona una letra</h3>
+                <button onclick="cerrarPopupTeclado()" class="bg-slate-200 hover:bg-slate-300 rounded-full p-2 text-slate-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <div id="popup-alphabet-container" class="flex flex-wrap justify-center gap-2 pb-4">
+                <!-- Las letras se inyectarán aquí por JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- Modal de Victoria -->
     <div id="victory-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-8 relative transform scale-95 transition-transform duration-300" id="victory-content">
@@ -115,11 +130,17 @@
         let mapaCifrado = {}; // Letra Real -> Letra Cifrada
         let mapaIntentos = {}; // Letra Cifrada -> Letra Intentada (Real)
         let letraSeleccionada = null; // Para soporte táctil/clic
+        let celdaActivaParaPopup = null; // Para saber qué celda abrió el teclado
 
         // Referencias al DOM
         const puzzleBoard = document.getElementById('puzzle-board');
         const alphabetContainer = document.getElementById('alphabet-container');
         
+        // Elementos del Teclado Popup
+        const keyboardModal = document.getElementById('keyboard-modal');
+        const keyboardContent = document.getElementById('keyboard-content');
+        const popupAlphabetContainer = document.getElementById('popup-alphabet-container');
+
         // Elementos del Modal
         const victoryModal = document.getElementById('victory-modal');
         const victoryContent = document.getElementById('victory-content');
@@ -325,16 +346,80 @@
             if (mapaIntentos[letraCifrada] === letraRealOriginal) return;
 
             if (letraSeleccionada) {
-                // Asignar la letra seleccionada del abecedario
+                // Asignar la letra seleccionada del abecedario inferior
                 asignarLetra(letraCifrada, letraSeleccionada);
                 letraSeleccionada = null; // Limpiar selección tras usarla
+                renderizarAbecedario(); // Asegurar que visualmente se deselecciona
             } else if (mapaIntentos[letraCifrada]) {
-                // Si la celda ya tiene una letra y no hay nada seleccionado, la borramos
+                // Si la celda ya tiene una letra y no hay nada seleccionado abajo, la borramos
                 delete mapaIntentos[letraCifrada];
                 renderizarTablero();
                 renderizarAbecedario();
                 verificarVictoria();
+            } else {
+                // Si la celda está vacía, abrir el teclado emergente
+                abrirPopupTeclado(letraCifrada);
             }
+        }
+
+        // --- Funciones para el Modal Teclado ---
+        
+        function abrirPopupTeclado(letraCifrada) {
+            celdaActivaParaPopup = letraCifrada;
+            renderizarTecladoPopup();
+            
+            keyboardModal.classList.remove('hidden');
+            
+            // Animación de entrada (deslizar en móvil, escalar en PC)
+            setTimeout(() => {
+                keyboardModal.classList.remove('opacity-0');
+                keyboardContent.classList.remove('translate-y-full'); 
+                keyboardContent.classList.remove('sm:scale-95'); 
+                keyboardContent.classList.add('translate-y-0');
+                keyboardContent.classList.add('sm:scale-100');
+            }, 10);
+        }
+
+        function cerrarPopupTeclado() {
+            // Animación de salida
+            keyboardModal.classList.add('opacity-0');
+            keyboardContent.classList.remove('translate-y-0');
+            keyboardContent.classList.remove('sm:scale-100');
+            keyboardContent.classList.add('translate-y-full');
+            keyboardContent.classList.add('sm:scale-95');
+            
+            setTimeout(() => {
+                keyboardModal.classList.add('hidden');
+                celdaActivaParaPopup = null;
+            }, 300);
+        }
+
+        function renderizarTecladoPopup() {
+            popupAlphabetContainer.innerHTML = '';
+            
+            ALFABETO.forEach(letra => {
+                const btnLetra = document.createElement('button');
+                const estaUsada = Object.values(mapaIntentos).includes(letra);
+                
+                let colorClasses = 'bg-white text-slate-800 border-slate-300 hover:bg-blue-50 border hover:border-blue-300 shadow-sm';
+                
+                if (estaUsada) {
+                    colorClasses = 'bg-slate-200 text-slate-400 border-slate-200 opacity-60 cursor-not-allowed';
+                }
+
+                // Botones ligeramente más grandes para que sean fáciles de tocar en móvil
+                btnLetra.className = `w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg font-bold text-lg sm:text-xl transition-all duration-200 touch-manipulation select-none ${colorClasses}`;
+                btnLetra.textContent = letra;
+
+                if (!estaUsada) {
+                    btnLetra.onclick = () => {
+                        asignarLetra(celdaActivaParaPopup, letra);
+                        cerrarPopupTeclado();
+                    };
+                }
+
+                popupAlphabetContainer.appendChild(btnLetra);
+            });
         }
 
         function asignarLetra(letraCifrada, nuevaLetraReal) {
